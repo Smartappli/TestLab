@@ -1,13 +1,13 @@
 FROM ubuntu:18.04
 
-RUN apt install -y software-properties-common debconf \
-  && apt-add-repository -y ppa:webupd8team/java \
-  && apt purge --auto-remove -y \
-  && apt update \
-  && echo oracle-java-8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections \
-  && apt install -y oracle-java8-installer oracle-java8-set-default \apt update \
-  && apt upgrade -y \
-  && apt install -y wget build-essential 
+RUN apt-get update \
+      && apt-get install -y software-properties-common debconf \
+      && apt-add-repository -y ppa:webupd8team/java \
+      && apt-get purge --auto-remove -y \
+      && apt-get update \
+      && echo oracle-java-8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections \
+      && apt-get install -y oracle-java8-installer oracle-java8-set-default \
+      && apt install -y wget build-essential 
   
 RUN wget -q -O - https://github.com/antirez/redis/archive/4.0.10.tar.gz | tar -xzf - -C /usr/local \
   && cd /usr/local/redis-4.0.10 \

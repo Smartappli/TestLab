@@ -14,4 +14,6 @@ RUN wget -q -O - https://www.apache.org/dyn/closer.cgi?path=/kafka/1.1.0/kafka_2
   && bin/zookeeper-server-start.sh config/zookeeper.properties \
   && cp config/server.properties config/server-1.properties \
   && cp config/server.properties config/server-2.properties \
-  && bin/kafka-server-start.sh config/server.properties
+  && bin/kafka-server-start.sh config/server.properties & \
+  && bin/kafka-server-start.sh config/server-1.properties & \
+  && bin/kafka-server-start.sh config/server-1.properties &

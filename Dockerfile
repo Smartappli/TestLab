@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 RUN apt update \
   && apt upgrade -y \
-  && sudo apt-get install -y build-essential \
+  && apt install -y build-essential \
   && wget -q -O - https://github.com/antirez/redis/archive/4.0.10.tar.gz | tar -xzf - -C /usr/local \
   && cd /usr/local/4.0.10 \
   && make V=1 \

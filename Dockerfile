@@ -7,6 +7,7 @@ RUN apt update \
 RUN wget -q -O - https://github.com/antirez/redis/archive/4.0.10.tar.gz | tar -xzf - -C /usr/local \
   && cd /usr/local/redis-4.0.10 \
   && make V=1 \
+  && make test \
   && make install 
   
 RUN wget -q -O - https://www.apache.org/dyn/closer.cgi?path=/kafka/1.1.0/kafka_2.11-1.1.0.tgz | tar -xzf - -C /usr/local \

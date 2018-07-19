@@ -9,9 +9,7 @@ RUN wget -q -O - https://github.com/antirez/redis/archive/4.0.10.tar.gz | tar -x
   && make V=1 \
   && make install 
   
-  
-RUN wget -q -O https://www.apache.org/dyn/closer.cgi?path=/kafka/1.1.0/kafka_2.11-1.1.0.tgz \
-  && tar -xzf kafka_2.11-1.1.0.tgz \
-  && cd kafka_2.11-1.1.0 \
+RUN wget -q -O - https://www.apache.org/dyn/closer.cgi?path=/kafka/1.1.0/kafka_2.11-1.1.0.tgz | tar -xzf - -C /usr/local \
+  && cd /usr/local/kafka_2.11-1.1.0 \
   && bin/zookeeper-server-start.sh config/zookeeper.properties \
   && bin/kafka-server-start.sh config/server.properties

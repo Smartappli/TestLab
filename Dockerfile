@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-RUN software-properties-common debconf \
+RUN apt install -y software-properties-common debconf \
   && apt-add-repository -y ppa:webupd8team/java \
   && apt purge --auto-remove -y \
   && apt update \

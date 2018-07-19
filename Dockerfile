@@ -1,6 +1,10 @@
 FROM ubuntu:18.04
 
-RUN apt update \
+RUN apt-add-repository -y ppa:webupd8team/java \
+  && apt purge --auto-remove -y \
+  && apt update \
+  && echo oracle-java-8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections \
+  && apt install -y oracle-java8-installer oracle-java8-set-default \apt update \
   && apt upgrade -y \
   && apt install -y wget build-essential 
   
